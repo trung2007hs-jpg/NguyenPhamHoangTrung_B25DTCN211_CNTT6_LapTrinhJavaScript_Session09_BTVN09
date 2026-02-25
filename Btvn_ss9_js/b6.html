@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function isArithmeticSequence(arr) {
+            if (!Array.isArray(arr) || arr.length < 2) {
+                return "Dữ liệu không hợp lệ";
+            }
+            for (let i = 0; i < arr.length; i++) {
+                if (!Number.isInteger(arr[i])) {
+                    return "Dữ liệu không hợp lệ";
+                }
+            }
+            let difference = arr[1] - arr[0];
+
+            for (let i = 2; i < arr.length; i++) {
+                if (arr[i] - arr[i - 1] !== difference) {
+                    return false;
+                }
+            }
+            return true;
+        }
+        function inputArray() {
+            let input = prompt("Nhập các số nguyên, cách nhau bằng dấu phẩy (ví dụ: 1,2,3,4):");
+            if (!input) return null;
+            let arr = input.split(",").map(item => Number(item.trim()));
+            return arr;
+        }
+        let arr = inputArray();
+        if (!arr) {
+            alert("Dữ liệu không hợp lệ");
+        } else {
+            let result = isArithmeticSequence(arr);
+            if (result === true) {
+                alert("TRUE");
+            } else if (result === false) {
+                alert("FALSE");
+            } else {
+                alert(result);
+            }
+        }
+    </script>
+</body>
+</html>

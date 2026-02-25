@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>b2</title>
+</head>
+
+<body>
+    <script>
+        let students = [];
+        let choice;
+        do {
+            choice = prompt(
+                "===== QUẢN LÝ SINH VIÊN =====\n" +
+                "1. Nhập danh sách sinh viên\n" +
+                "2. Hiển thị danh sách\n" +
+                "3. Tìm sinh viên\n" +
+                "4. Xóa sinh viên\n" +
+                "5. Thoát\n" +
+                "=============================\n" +
+                "Chọn chức năng (1-5):"
+            );
+            switch (choice) {
+                case "1:":
+                    inputStudents();
+                    break;
+                case "2":
+                    displayStudents();
+                    break;
+                case "3":
+                    findStudent();
+                    break;
+                case "4":
+                    deleteStudent();
+                    break;
+                case "5":
+                    alert("Đã thoát chương trình.");
+                    break;
+                default:
+                    alert("Lựa chọn không hợp lệ.");
+            }
+        } while (choice !== "5");
+        function inputStudents() {
+            let number = +prompt("Nhập số lượng sinh viên:");
+            students = [];
+            for (let i = 0; i < number; i++) {
+                let name = prompt("Nhập tên sinh viên thứ " + (i + 1) + ":");
+                students.push(name);
+            }
+            alert("Đã nhập xong danh sách.");
+        }
+        function displayStudents() {
+            if (students.length === 0) {
+                alert("Danh sách đang trống.");
+                return;
+            }
+            let list = "DANH SÁCH SINH VIÊN:\n";
+            for (let i = 0; i < students.length; i++) {
+                list += (i + 1) + ". " + students[i] + "\n";
+            }
+            alert(list);
+        }
+        function findStudent() {
+            if (students.length === 0) {
+                alert("Danh sách đang trống.");
+                return;
+            }
+            let nameToFind = prompt("Nhập tên sinh viên cần tìm:");
+            for (let i = 0; i < students.length; i++) {
+                if (students[i] === nameToFind) {
+                    alert("Tìm thấy: " + students[i]);
+                    return;
+                }
+            }
+            alert("Sinh viên không có trong danh sách.");
+        }
+        function deleteStudent() {
+            if (students.length === 0) {
+                alert("Danh sách đang trống.");
+                return;
+            }
+            let nameToDelete = prompt("Nhập tên sinh viên cần xóa:");
+            for (let i = 0; i < students.length; i++) {
+                if (students[i] === nameToDelete) {
+                    students.splice(i, 1);
+                    alert("Đã xóa sinh viên: " + nameToDelete);
+                    return;
+                }
+            }
+            alert("Sinh viên không tồn tại.");
+        }
+    </script>
+</body>
+</html>

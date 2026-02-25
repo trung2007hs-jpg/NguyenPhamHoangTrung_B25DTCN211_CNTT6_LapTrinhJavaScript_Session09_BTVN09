@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function splitArray(arr, n) {
+            if (!Array.isArray(arr) || typeof n !== "number" || n <= 0) {
+                return "dữ liệu không hợp lệ";
+            }
+            let result = [];
+            for (let i = 0; i < arr.length; i += n) {
+                result.push(arr.slice(i, i + n));
+            }
+            return result;
+        }
+        function inputArray() {
+            let input = prompt("Nhập các phần tử, cách nhau bằng dấu phẩy (ví dụ: 1,2,3,4):");
+            if (!input) return null;
+            let arr = input.split(",").map(item => item.trim());
+            return arr;
+        }
+        let choice;
+        do {
+            choice = prompt(
+                "===== MENU =====\n" +
+                "1. Chia mảng thành mảng con\n" +
+                "2. Thoát\n" +
+                "Chọn (1-2):"
+            );
+            switch (choice) {
+                case "1": {
+                    let arr = inputArray();
+                    if (!arr) {
+                        alert("dữ liệu không hợp lệ");
+                        break;
+                    }
+                    let n = Number(prompt("Nhập kích thước mảng con:"));
+                    let result = splitArray(arr, n);
+                    if (typeof result === "string") {
+                        alert(result);
+                    } else {
+                        alert("Kết quả: " + JSON.stringify(result));
+                    }
+                    break;
+                }
+                case "2":
+                    alert("Đã thoát chương trình.");
+                    break;
+                default:
+                    alert("Lựa chọn không hợp lệ.");
+            }
+        } while (choice !== "2");
+    </script>
+</body>
+</html>

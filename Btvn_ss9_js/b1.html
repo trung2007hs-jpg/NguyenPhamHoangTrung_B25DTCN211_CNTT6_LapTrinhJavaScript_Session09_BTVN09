@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>b1</title>
+</head>
+<body>
+    <script>
+        let choice;
+        do {
+            choice= prompt(`=========== MENU TÍNH TOÁN ===========
+1. Cộng hai số
+2. Trừ hai số
+3. Nhân hai số
+4. Chia hai số
+5. Thoát
+===================================
+Nhập lựa chọn của bạn (1-5):`);
+            if (choice >= 1 && choice <= 4) {
+                let number1 = prompt("Nhập số thứ nhất:");
+                let number2 = prompt("Nhập số thứ hai:");
+                switch (choice) {
+                    case "1":
+                        console.log("Kết quả:", add(number1, number2));
+                        break;
+                    case "2":
+                        console.log("Kết quả:", subtract(number1, number2));
+                        break;
+                    case "3":
+                        console.log("Kết quả:", multiply(number1, number2));
+                        break;
+                    case "4":
+                        console.log("Kết quả:", divide(number1, number2));
+                        break;
+                }
+            } else if (choice === "5") {
+                alert("Đã thoát chương trình.");
+            } else {
+                alert("Lựa chọn không hợp lệ.");
+            }
+        } while (choice !== "5");
+        function add(a, b) {
+            return a + b;
+        }
+        function subtract(a, b) {
+            return a - b;
+        }
+        function multiply(a, b) {
+            return a * b;
+        }
+        function divide(a, b) {
+            if (b === 0) {
+                return "Không thể chia cho 0";
+            }
+            return a / b;
+        }
+    </script>
+</body>
+</html>

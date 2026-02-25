@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>b7</title>
+</head>
+<body>
+    <script>
+        function findMissingNumber(arr) {
+            if (!Array.isArray(arr) || arr.length < 2) {
+                return "Dữ liệu không hợp lệ";
+            }
+            for (let i = 0; i < arr.length; i++) {
+                if (!Number.isInteger(arr[i])) {
+                    return "Dữ liệu không hợp lệ";
+                }
+            }
+            arr.sort(function (a, b) {
+                return a - b;
+            });
+            for (let i = 1; i < arr.length; i++) {
+                if (arr[i] - arr[i - 1] !== 1) {
+                    return arr[i - 1] + 1;
+                }
+            }
+            return "Không có số bị thiếu";
+        }
+        let input = prompt("Nhập các số nguyên liên tiếp, cách nhau bằng dấu phẩy (ví dụ: 1,2,3,5,6)");
+        if (!input) {
+            alert("Dữ liệu không hợp lệ");
+        } else {
+            let arr = input.split(",");
+            for (let i = 0; i < arr.length; i++) {
+                arr[i] = Number(arr[i].trim());
+            }
+            let result = findMissingNumber(arr);
+            alert(result);
+        }
+    </script>
+</body>
+</html>

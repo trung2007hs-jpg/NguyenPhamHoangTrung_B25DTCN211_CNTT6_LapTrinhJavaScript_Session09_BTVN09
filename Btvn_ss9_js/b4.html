@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>b4</title>
+</head>
+<body>
+    <script>
+        function inputNumbers() {
+            let n = Number(prompt("Nhập số lượng phần tử:"));
+            numbers = [];
+            for (let i = 0; i < n; i++) {
+                let value = Number(prompt("Nhập số nguyên thứ " + (i + 1) + ":"));
+                numbers.push(value);
+            }
+            alert("Đã nhập danh sách thành công.");
+        }
+        function averageNumbers() {
+            if (numbers.length === 0) {
+                alert("Danh sách đang trống.");
+                return;
+            }
+            let sum = 0;
+            for (let i = 0; i < numbers.length; i++) {
+                sum += numbers[i];
+            }
+            alert("Trung bình các số là: " + (sum / numbers.length));
+        }
+        function maxEven() {
+            if (numbers.length === 0) {
+                alert("Danh sách đang trống.");
+                return;
+            }
+            let max = null;
+            for (let i = 0; i < numbers.length; i++) {
+                if (numbers[i] % 2 === 0) {
+                    if (max === null || numbers[i] > max) {
+                        max = numbers[i];
+                    }
+                }
+            }
+            if (max === null) {
+                alert("Không có số chẵn trong danh sách.");
+            } else {
+                alert("Số chẵn lớn nhất là: " + max);
+            }
+        }
+        function minOdd() {
+            if (numbers.length === 0) {
+                alert("Danh sách đang trống.");
+                return;
+            }
+            let min = null;
+            for (let i = 0; i < numbers.length; i++) {
+                if (numbers[i] % 2 !== 0) {
+                    if (min === null || numbers[i] < min) {
+                        min = numbers[i];
+                    }
+                }
+            }
+            if (min === null) {
+                alert("Không có số lẻ trong danh sách.");
+            } else {
+                alert("Số lẻ nhỏ nhất là: " + min);
+            }
+        }
+        let numbers = [];
+        let choice;
+        do {
+            choice = prompt(
+                "===== MENU XỬ LÝ SỐ NGUYÊN =====\n" +
+                "1. Nhập danh sách số\n" +
+                "2. Tính trung bình\n" +
+                "3. Tìm số chẵn lớn nhất\n" +
+                "4. Tìm số lẻ nhỏ nhất\n" +
+                "5. Thoát\n" +
+                "Chọn (1-5):"
+            );
+            switch (choice) {
+                case "1":
+                    inputNumbers();
+                    break;
+                case "2":
+                    averageNumbers();
+                    break;
+                case "3":
+                    maxEven();
+                    break;
+                case "4":
+                    minOdd();
+                    break;
+                case "5":
+                    alert("Đã thoát chương trình.");
+                    break;
+                default:
+                    alert("Lựa chọn không hợp lệ.");
+            }
+        } while (choice !== "5");
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>b8</title>
+</head>
+<body>
+    <script>
+        function createLargestNumber(num) {
+            if (!Number.isInteger(num)) {
+                return "Dữ liệu không hợp lệ";
+            }
+            let digits = num.toString().split("");
+            digits.sort(function (a, b) {
+                return b - a;
+            });
+            return Number(digits.join(""));
+        }
+        let input = prompt("Nhập một số nguyên:");
+        if (!input) {
+            alert("Dữ liệu không hợp lệ");
+        } else {
+            let num = Number(input);
+            let result = createLargestNumber(num);
+            alert(result);
+        }
+    </script>
+</body>
+</html>

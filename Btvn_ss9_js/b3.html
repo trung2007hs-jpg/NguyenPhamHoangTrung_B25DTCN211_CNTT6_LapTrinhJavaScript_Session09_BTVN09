@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>b3</title>
+</head>
+<body>
+    <script>
+        function areaCircle(r) {
+            return Math.PI * r * r;
+        }
+        function perimeterCircle(r) {
+            return 2 * Math.PI * r;
+        }
+        function areaRectangle(l, w) {
+            return l * w;
+        }
+        function perimeterRectangle(l, w) {
+            return 2 * (l + w);
+        }
+        let choice;
+        do {
+            choice = prompt(
+                "===== MENU TÍNH TOÁN HÌNH HỌC =====\n" +
+                "1. Tính diện tích hình tròn\n" +
+                "2. Tính chu vi hình tròn\n" +
+                "3. Tính diện tích hình chữ nhật\n" +
+                "4. Tính chu vi hình chữ nhật\n" +
+                "5. Thoát\n" +
+                "Chọn chức năng (1-5):"
+            );
+            switch (choice) {
+                case "1": {
+                    let radius = Number(prompt("Nhập bán kính:"));
+                    alert("Diện tích hình tròn: " + areaCircle(radius));
+                    break;
+                }
+                case "2": {
+                    let radius = Number(prompt("Nhập bán kính:"));
+                    alert("Chu vi hình tròn: " + perimeterCircle(radius));
+                    break;
+                }
+                case "3": {
+                    let length = Number(prompt("Nhập chiều dài:"));
+                    let width = Number(prompt("Nhập chiều rộng:"));
+                    alert("Diện tích hình chữ nhật: " + areaRectangle(length, width));
+                    break;
+                }
+                case "4": {
+                    let length = Number(prompt("Nhập chiều dài:"));
+                    let width = Number(prompt("Nhập chiều rộng:"));
+                    alert("Chu vi hình chữ nhật: " + perimeterRectangle(length, width));
+                    break;
+                }
+                case "5":
+                    alert("Đã thoát chương trình.");
+                    break;
+                default:
+                    alert("Lựa chọn không hợp lệ.");
+            }
+        } while (choice !== "5");
+    </script>
+</body>
+</html>
