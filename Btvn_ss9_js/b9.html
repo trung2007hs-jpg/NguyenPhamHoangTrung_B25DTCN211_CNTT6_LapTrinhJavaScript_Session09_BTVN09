@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sắp xếp số chẵn</title>
+</head>
+<body>
+    <script>
+        function sortEvenNumbers(arr) {
+            if (!Array.isArray(arr)) {
+                return "Dữ liệu không hợp lệ";
+            }
+            let evenNumbers = [];
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i] % 2 === 0) {
+                    evenNumbers.push(arr[i]);
+                }
+            }
+            evenNumbers.sort(function (a, b) {
+                return a - b;
+            });
+            let index = 0;
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i] % 2 === 0) {
+                    arr[i] = evenNumbers[index];
+                    index++;
+                }
+            }
+            return arr;
+        }
+        let input = prompt("Nhập các số cách nhau bằng dấu phẩy:");
+        if (!input) {
+            alert("Dữ liệu không hợp lệ");
+        } else {
+            let arr = input.split(",");
+            for (let i = 0; i < arr.length; i++) {
+                arr[i] = Number(arr[i].trim());
+            }
+            let result = sortEvenNumbers(arr);
+            alert(result);
+        }
+    </script>
+</body>
+</html>
